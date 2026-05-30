@@ -7,6 +7,7 @@ import com.campuslite.logic.CourseManager;
 import com.campuslite.logic.EnrollmentManager;
 import com.campuslite.logic.StudentManager;
 import com.campuslite.persistence.EnrollmentCSVRepository;
+import com.campuslite.persistence.EvaluationCSVRepository;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -23,9 +24,10 @@ public class EnrollmentsPanel extends JPanel {
 
     private final EnrollmentManager enrollmentManager;
     
-    private Runnable onEnrollmentsChanged;
-
     private final EnrollmentCSVRepository repository;
+    private final EvaluationCSVRepository evaluationRepository;
+    
+    private Runnable onEnrollmentsChanged;
 
     /**
      * Componentes UI.
@@ -50,6 +52,9 @@ public class EnrollmentsPanel extends JPanel {
 
         repository =
                 new EnrollmentCSVRepository();
+        
+        evaluationRepository =
+                new EvaluationCSVRepository();
 
         initialize();
 
@@ -134,6 +139,9 @@ public class EnrollmentsPanel extends JPanel {
          */
         ModernButton btnEnroll =
                 new ModernButton("📘 Inscribir");
+        
+        ModernButton btnUnenroll =
+                new ModernButton("🗑 Desinscribir");
 
         JPanel buttonPanel =
                 new JPanel();
@@ -143,6 +151,7 @@ public class EnrollmentsPanel extends JPanel {
         );
 
         buttonPanel.add(btnEnroll);
+        buttonPanel.add(btnUnenroll);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -175,6 +184,10 @@ public class EnrollmentsPanel extends JPanel {
          */
         btnEnroll.addActionListener(
                 e -> enrollStudent()
+        );
+        
+        btnUnenroll.addActionListener(
+                e -> unenrollStudent()
         );
 
         add(topPanel, BorderLayout.NORTH);
@@ -226,7 +239,8 @@ public class EnrollmentsPanel extends JPanel {
                     enrollmentManager
                             .getEnrollments()
             );
-
+            
+           
             refreshTable();
 
             revalidate();
@@ -341,4 +355,71 @@ public class EnrollmentsPanel extends JPanel {
         this.onEnrollmentsChanged =
                 onEnrollmentsChanged;
     }
+    
+    /**
+     * Desinscribe estudiante.
+     */
+    private void unenrollStudent() {
+
+        try {
+
+            Student student =
+                    (Student) cmbStudents
+                            .getSelectedItem();
+
+            Course course =
+                    (Course) cmbCourses
+                            .getSelectedItem();
+
+            if (student == null || course == null) {
+
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Debe seleccionar estudiante y curso."
+                );
+
+                return;
+            }
+
+            enrollmentManager.removeEnrollment(
+                    student,
+                    course
+            );
+
+            repository.saveEnrollments(
+                    enrollmentManager.getEnrollments()
+            );
+            
+            evaluationRepository.saveEvaluations(
+                    enrollmentManager.getEnrollments()
+            );
+
+            refreshTable();
+
+            revalidate();
+
+            repaint();
+
+            if (onEnrollmentsChanged != null) {
+
+                onEnrollmentsChanged.run();
+            }
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Inscripción eliminada."
+            );
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+    
+    
 }

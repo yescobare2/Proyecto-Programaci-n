@@ -228,4 +228,28 @@ public class EnrollmentManager {
 
         return enrollments;
     }
+    
+    /**
+     * Elimina una inscripción.
+     */
+    public void removeEnrollment(
+            Student student,
+            Course course
+    ) {
+
+        enrollments.removeIf(
+                enrollment ->
+                        enrollment.getStudent()
+                                .getStudentCode()
+                                .equals(
+                                        student.getStudentCode()
+                                )
+                        &&
+                        enrollment.getCourse()
+                                .getCourseCode()
+                                .equals(
+                                        course.getCourseCode()
+                                )
+        );
+    }
 }
