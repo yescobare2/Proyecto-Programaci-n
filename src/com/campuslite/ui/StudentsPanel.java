@@ -143,12 +143,17 @@ public class StudentsPanel extends JPanel {
 
         ModernButton btnDelete =
                 new ModernButton("❌ Eliminar");
+        
+        ModernButton btnClear =
+                new ModernButton("🧹 Limpiar");
 
         buttonPanel.add(btnAdd);
 
         buttonPanel.add(btnUpdate);
 
         buttonPanel.add(btnDelete);
+        
+        buttonPanel.add(btnClear);
 
         /**
          * =========================
@@ -205,6 +210,11 @@ public class StudentsPanel extends JPanel {
          * Evento actualizar estudiante.
          */
         btnUpdate.addActionListener(e -> updateStudent());
+        
+        /**
+         * Evento limpiar estudiante.
+         */
+        btnClear.addActionListener( e -> clearFields() );
 
         /**
          * Evento seleccionar fila.
