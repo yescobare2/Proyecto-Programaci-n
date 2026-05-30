@@ -410,6 +410,7 @@ public class EvaluationsPanel extends JPanel {
         txtScore.setText("");
         txtPercentage.setText("");
         cmbType.setSelectedIndex(0);
+        table.clearSelection();
     }
 
     private void loadSelectedEvaluation() {

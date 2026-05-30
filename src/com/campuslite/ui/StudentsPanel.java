@@ -468,6 +468,8 @@ public class StudentsPanel extends JPanel {
          * para nuevos registros.
          */
         txtCode.setEditable(true);
+        
+        table.clearSelection();
     }
 
     /**

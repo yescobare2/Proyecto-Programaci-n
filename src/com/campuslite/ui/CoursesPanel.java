@@ -532,6 +532,8 @@ public class CoursesPanel extends JPanel {
          * para nuevos registros.
          */
         txtCode.setEditable(true);
+        
+        table.clearSelection();
     }
 
     /**
