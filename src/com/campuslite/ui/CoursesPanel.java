@@ -153,7 +153,7 @@ public class CoursesPanel extends JPanel {
                 new ModernButton("❌ Eliminar");
         
         ModernButton btnClear =
-                new ModernButton("🧹 Limpiar");
+                new ModernButton("➖ Limpiar");
 
         buttonPanel.add(btnAdd);
 

@@ -125,10 +125,12 @@ public class EvaluationsPanel extends JPanel {
         ModernButton btnAdd = new ModernButton("➕ Agregar");
         ModernButton btnUpdate = new ModernButton("🔄 Actualizar");
         ModernButton btnDelete = new ModernButton("❌ Eliminar");
+        ModernButton btnClear = new ModernButton("➖ Limpiar");
 
         buttonPanel.add(btnAdd);
         buttonPanel.add(btnUpdate);
         buttonPanel.add(btnDelete);
+        buttonPanel.add(btnClear);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -159,6 +161,7 @@ public class EvaluationsPanel extends JPanel {
         btnAdd.addActionListener(e -> addEvaluation());
         btnUpdate.addActionListener(e -> updateEvaluation());
         btnDelete.addActionListener(e -> deleteEvaluation());
+        btnClear.addActionListener(e -> clearFields());
 
         cmbStudents.addActionListener(e -> refreshTable());
         cmbCourses.addActionListener(e -> refreshTable());
@@ -406,6 +409,7 @@ public class EvaluationsPanel extends JPanel {
         txtName.setText("");
         txtScore.setText("");
         txtPercentage.setText("");
+        cmbType.setSelectedIndex(0);
     }
 
     private void loadSelectedEvaluation() {
