@@ -46,5 +46,14 @@ public class ValidationUtils {
             return false;
         }
     }
+    
+    /**
+     * Validar nombre y apellido que solo sean letras y no contengan numeros
+     */
+     public static boolean isOnlyLetters(String text) {
+
+         return text != null &&
+                text.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
+     }
 
 }

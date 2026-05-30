@@ -475,6 +475,20 @@ public class StudentsPanel extends JPanel {
                     "Todos los campos son obligatorios."
             );
         }
+        
+        if (!ValidationUtils.isOnlyLetters(firstName)) {
+
+            throw new IllegalArgumentException(
+                    "El nombre solo puede contener letras."
+            );
+        }
+
+        if (!ValidationUtils.isOnlyLetters(lastName)) {
+
+            throw new IllegalArgumentException(
+                    "El apellido solo puede contener letras."
+            );
+        }
     }
 
     
