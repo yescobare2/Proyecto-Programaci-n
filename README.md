@@ -1,158 +1,132 @@
 # Campus Lite
 
-Sistema de gestión académica desarrollado en Java Swing como proyecto integrador del curso de Programación.
-
----
+Proyecto integrador desarrollado en Java Swing para la gestión académica básica de estudiantes, cursos, inscripciones y evaluaciones.
 
 ## Integrantes
 
-* Yesmy Darlery
-* Oscar Norbey
-* Daniel Méndez
+- Yesmy Darlery
+- Oscar Norbey
+- José Daniel
 
----
+## Opción del proyecto
 
-## Descripción
+**Opción A – Campus Lite**
 
-Campus Lite es una aplicación de escritorio desarrollada en Java que permite administrar información académica mediante una interfaz gráfica amigable.
+Sistema académico que permite:
 
-El sistema permite gestionar estudiantes, cursos, inscripciones y evaluaciones, además de generar reportes académicos y almacenar la información mediante archivos CSV.
-
----
-
-## Funcionalidades
-
-### Gestión de estudiantes
-
-* Crear estudiantes.
-* Actualizar estudiantes.
-* Eliminar estudiantes.
-* Validación de campos obligatorios.
-* Validación de nombres y apellidos (solo letras).
-* Generación automática de correo institucional.
-
-### Gestión de cursos
-
-* Crear cursos.
-* Actualizar cursos.
-* Eliminar cursos.
-* Administración de créditos.
-* Administración de cupo.
-
-### Gestión de inscripciones
-
-* Inscribir estudiantes en cursos.
-* Evitar inscripciones duplicadas.
-* Desinscribir estudiantes.
-* Actualización automática de datos relacionados.
-
-### Gestión de evaluaciones
-
-* Registrar evaluaciones.
-* Registrar notas.
-* Manejar distintos tipos de evaluación.
-* Calcular contribución de cada evaluación.
-
-### Reportes
-
-* Consulta de estudiantes inscritos.
-* Consulta de cursos.
-* Visualización de resultados académicos.
+- Gestionar estudiantes.
+- Gestionar cursos.
+- Realizar inscripciones.
+- Registrar evaluaciones.
+- Calcular resultados académicos.
+- Generar reportes.
 
 ---
 
 ## Tecnologías utilizadas
 
-* Java
-* Java Swing
-* Eclipse IDE
-* Git
-* GitHub
-* Archivos CSV
+- Java
+- Java Swing
+- Eclipse IDE
+- CSV para persistencia de datos
+- Git y GitHub
 
 ---
 
 ## Requisitos
 
-* JDK 17 o superior.
-* Eclipse IDE (recomendado).
+- JDK 17 o superior
+- Eclipse IDE (o cualquier IDE compatible con Java)
 
 ---
 
-## Ejecución
+## Cómo ejecutar el proyecto
 
-1. Clonar el repositorio.
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/yescobare2/Proyecto_Programacion.git
+```
+
 2. Abrir el proyecto en Eclipse.
+
 3. Ejecutar la clase:
 
 ```text
 com.campuslite.main.Main
 ```
 
-4. Utilizar la interfaz gráfica.
+4. La aplicación iniciará mostrando el menú principal.
 
 ---
 
 ## Estructura del proyecto
 
 ```text
-src/
+com.campuslite
 
-└── com.campuslite
-
-    ├── domain
-    │   ├── Course
-    │   ├── Enrollment
-    │   ├── Evaluation
-    │   ├── GradeRecord
-    │   ├── Laboratory
-    │   ├── Person
-    │   ├── ProjectEvaluation
-    │   ├── Student
-    │   └── WrittenExam
-    │
-    ├── logic
-    │   ├── CourseManager
-    │   ├── EnrollmentManager
-    │   ├── EvaluationManager
-    │   ├── ReportManager
-    │   ├── StudentManager
-    │   └── ValidationUtils
-    │
-    ├── persistence
-    │   ├── CourseCSVRepository
-    │   ├── EnrollmentCSVRepository
-    │   ├── EvaluationCSVRepository
-    │   ├── FilePaths
-    │   └── StudentCSVRepository
-    │
-    ├── ui
-    │   ├── CoursesPanel
-    │   ├── EnrollmentsPanel
-    │   ├── EvaluationsPanel
-    │   ├── MainFrame
-    │   ├── ModernButton
-    │   ├── ModernTable
-    │   ├── ReportsPanel
-    │   ├── StudentsPanel
-    │   ├── UIStyles
-    │   └── logo.png
-    │
-    └── main
-        └── Main
-
-data/
-
-├── students.csv
-├── courses.csv
-├── enrollments.csv
-└── evaluations.csv
-
-images/
-
-├── home-screen.png
-└── students-screen.png
+├── domain
+│   ├── Course
+│   ├── Enrollment
+│   ├── Evaluation
+│   ├── GradeRecord
+│   ├── Laboratory
+│   ├── Person
+│   ├── ProjectEvaluation
+│   ├── Student
+│   └── WrittenExam
+│
+├── logic
+│   ├── CourseManager
+│   ├── EnrollmentManager
+│   ├── EvaluationManager
+│   ├── ReportManager
+│   ├── StudentManager
+│   └── ValidationUtils
+│
+├── persistence
+│   ├── CourseCSVRepository
+│   ├── EnrollmentCSVRepository
+│   ├── EvaluationCSVRepository
+│   ├── StudentCSVRepository
+│   └── FilePaths
+│
+├── ui
+│   ├── MainFrame
+│   ├── StudentsPanel
+│   ├── CoursesPanel
+│   ├── EnrollmentsPanel
+│   ├── EvaluationsPanel
+│   ├── ReportsPanel
+│   ├── ModernButton
+│   ├── ModernTable
+│   ├── UIStyles
+│   └── logo.png
+│
+└── main
+    └── Main
 ```
+
+---
+
+## Persistencia de datos
+
+La aplicación almacena la información utilizando archivos CSV ubicados en la carpeta:
+
+```text
+data/
+```
+
+Archivos utilizados:
+
+```text
+students.csv
+courses.csv
+enrollments.csv
+evaluations.csv
+```
+
+Los datos permanecen almacenados después de cerrar y volver a abrir la aplicación.
 
 ---
 
@@ -160,119 +134,190 @@ images/
 
 ### Encapsulamiento
 
-Las entidades utilizan atributos privados y acceso controlado mediante getters y setters con validaciones.
+Todos los atributos se encuentran privados y son accesibles mediante getters y setters con validaciones.
+
+Ejemplo:
+
+- Person
+- Student
+- Course
+- Evaluation
+
+---
 
 ### Herencia
 
-```text
-Person
-└── Student
+La clase abstracta:
 
-Evaluation
-├── WrittenExam
-├── Laboratory
-└── ProjectEvaluation
+```java
+Person
 ```
 
-### Clases abstractas
+es heredada por:
 
-* Person
-* Evaluation
+```java
+Student
+```
 
-### Sobrescritura
+La clase abstracta:
 
-Las subclases implementan métodos abstractos mediante `@Override`.
+```java
+Evaluation
+```
+
+es heredada por:
+
+```java
+WrittenExam
+Laboratory
+ProjectEvaluation
+```
+
+---
+
+### Abstracción
+
+Se utilizan dos clases abstractas:
+
+#### Person
+
+```java
+public abstract String getFullInfo();
+```
+
+#### Evaluation
+
+```java
+public abstract String getTypeName();
+
+public abstract double calculateContribution();
+```
+
+---
+
+### Polimorfismo
+
+Las evaluaciones son manejadas mediante referencias del tipo:
+
+```java
+Evaluation
+```
+
+permitiendo trabajar con:
+
+```java
+WrittenExam
+Laboratory
+ProjectEvaluation
+```
+
+sin conocer el tipo concreto.
 
 Ejemplo:
 
 ```java
-getTypeName()
-
-calculateContribution()
+List<Evaluation> evaluations;
 ```
 
-### Polimorfismo
+---
 
-Las evaluaciones se manejan mediante referencias del tipo:
+### Sobrescritura (@Override)
+
+Las subclases de Evaluation implementan:
 
 ```java
-Evaluation
+@Override
+public double calculateContribution()
 ```
 
-permitiendo trabajar de forma uniforme con:
+y
 
-* WrittenExam
-* Laboratory
-* ProjectEvaluation
+```java
+@Override
+public String getTypeName()
+```
+
+según el comportamiento específico de cada tipo de evaluación.
+
+---
 
 ### Sobrecarga
 
-Se utilizan constructores sobrecargados, por ejemplo en la clase Person.
+Se implementa mediante constructores con distintas firmas en diversas clases del dominio.
+
+Ejemplo:
+
+```java
+public Person()
+
+public Person(String id,
+              String firstName,
+              String lastName,
+              String email)
+```
 
 ---
 
-## Persistencia
+## Funcionalidades implementadas
 
-La información se almacena mediante archivos CSV.
+### Estudiantes
 
-Archivos utilizados:
+- Agregar estudiantes.
+- Editar estudiantes.
+- Eliminar estudiantes.
+- Limpiar estudiantes.
+- Validación de campos obligatorios.
+- Validación de nombres sin números.
 
-* students.csv
-* courses.csv
-* enrollments.csv
-* evaluations.csv
+### Cursos
 
-Los datos permanecen almacenados después de cerrar la aplicación.
+- Agregar cursos.
+- Editar cursos.
+- Eliminar cursos.
+- Limpiar cursos
+- Validación de cupo y créditos.
+
+### Inscripciones
+
+- Inscribir estudiantes.
+- Desinscribir estudiantes.
+- Eliminación automática de inscripciones relacionadas.
+
+### Evaluaciones
+
+- Exámenes escritos.
+- Laboratorios.
+- Proyectos.
+- Registro de notas.
+- Validación de porcentajes.
+
+### Reportes
+
+- Consulta de estudiantes.
+- Consulta de cursos.
+- Visualización de resultados académicos.
 
 ---
 
-## Capturas de pantalla de maqueta UI
+## Capturas de pantalla
 
 ### Menú principal
 
-![Menú principal](images/home-screen.png)
+![Menú Principal](images/home-screen.png)
 
 ### Gestión de estudiantes
 
-![Gestión de estudiantes](images/students-screen.png)
+![Gestión de Estudiantes](images/students-screen.png)
 
 ---
 
-## Decisiones de diseño
+## Herramientas de planificación
 
-El proyecto utiliza una arquitectura por capas:
-
-* domain → entidades del sistema.
-* logic → reglas de negocio.
-* persistence → almacenamiento de datos.
-* ui → interfaz gráfica.
-
-Esta separación permite mantener el código organizado, reutilizable y fácil de mantener.
-
----
-
-## Control de versiones
-
-El proyecto utiliza Git y GitHub con commits semánticos.
-
-Ejemplos:
-
-```text
-feat(students): add clear button
-
-feat(enrollments): add unenroll feature
-
-fix(ui): reset table selection after clear
-```
+- Trello
+- GitHub
 
 ---
 
 ## Estado del proyecto
 
-Versión académica funcional desarrollada para el proyecto integrador de Programación.
-
----
-
-## Licencia
-
-Proyecto desarrollado con fines educativos.
+Versión académica funcional desarrollada para el curso de Programación I utilizando Java Swing y Programación Orientada a Objetos.
