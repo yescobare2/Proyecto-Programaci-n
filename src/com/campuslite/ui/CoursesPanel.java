@@ -151,12 +151,17 @@ public class CoursesPanel extends JPanel {
 
         ModernButton btnDelete =
                 new ModernButton("❌ Eliminar");
+        
+        ModernButton btnClear =
+                new ModernButton("🧹 Limpiar");
 
         buttonPanel.add(btnAdd);
 
         buttonPanel.add(btnUpdate);
 
         buttonPanel.add(btnDelete);
+        
+        buttonPanel.add(btnClear);
 
         /**
          * =========================
@@ -218,6 +223,13 @@ public class CoursesPanel extends JPanel {
          */
         btnDelete.addActionListener(
                 e -> deleteCourse()
+        );
+        
+        /**
+         * Evento limpiar.
+         */
+        btnClear.addActionListener(
+                e -> clearFields()
         );
 
         /**
